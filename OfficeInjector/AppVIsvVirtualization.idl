@@ -1,0 +1,16 @@
+import "wtypesbase.idl";
+[
+    uuid(d99d2add-4f00-41b8-bf99-bb03127f015f),
+    version(1.0)
+]
+
+interface AppVIsvVirtualization
+{
+    typedef struct _PATH_STRUCT
+    {
+        DWORD PathLength;
+        [size_is(PathLength), unique] const wchar_t* Path;
+    } PATH_STRUCT;
+    int virtman_notification_server_notify_new_process([in] int Pid);
+    int virtman_notification_server_notify_new_child_process([in] int Pid, [in] PATH_STRUCT* PathStruct);
+}
